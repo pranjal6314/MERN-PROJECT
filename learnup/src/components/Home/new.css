@@ -42,3 +42,11 @@ width: 60%;
         width: 100%;
     }
 }
+.Course{
+    margin-bottom: 1rem;
+    transition: all 0.5s;
+
+}
+.Course:hover{
+    transform: translateY(-10px);
+}

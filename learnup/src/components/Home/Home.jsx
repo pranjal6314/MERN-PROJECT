@@ -14,8 +14,8 @@ const Home = () => {
                 <Stack direction={['column', 'row']} height='100%' justifyContent={['center', 'space-between']} alignItems="center" spacing={['16', '56']}
                 > {/* stack is div with display flex  direction id column if this is phone other wise row*/}
                     <VStack width={"100%"} alignItems={['center', 'flex-end']}> {/*Vstack is div with display flex direction is column*/}
-                        <Heading children="Learn from pranjal" />
-                        <Text children="Find Valueable Content At Reasonable Prize" />
+                        <Heading children="Learn from pranjal" size={"2xl"} />
+                        <Text textAlign={['center', 'left']} children="Find Valueable Content At Reasonable Prize" />
                         <Link to="/courses">
                             <Button size={"lg"} colorScheme={"yellow"}>Explore Now</Button>
                         </Link>
