@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Container, Text, Heading, HStack, Input, Stack, VStack, Image, Link, Box } from '@chakra-ui/react'
+import { Button, Container, Text, Heading, HStack, Input, Stack, VStack, Image, Box } from '@chakra-ui/react'
 import { TiSocialYoutubeCircular, TiSocialLinkedinCircular, TiSocialInstagramCircular } from "react-icons/ti"
 import { DiGithub } from 'react-icons/di'
 const Footer = () => {

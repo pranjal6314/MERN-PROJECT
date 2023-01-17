@@ -16,7 +16,7 @@ const Header = () => {
     const user = {
         role: "admin"
     }
-    const isAuthenticated = true;
+    const isAuthenticated = false;
     const logoutHandler = () => {
         console.log("logout");
         onClose();
