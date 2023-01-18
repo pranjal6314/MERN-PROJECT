@@ -1,6 +1,6 @@
 import { Container, VStack, Heading, FormLabel, Input, Box, Button } from '@chakra-ui/react'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 const Login = () => {
     const [email, setEmail] = React.useState("")
     const [password, setPassword] = React.useState("")
