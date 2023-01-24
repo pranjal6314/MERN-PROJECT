@@ -45,12 +45,22 @@ const Courses = () => {
             <Stack direction={['column', 'row']} flexWrap="wrap" justifyContent={['flex-start', 'space-evenly']} alignItems={['center', 'flex-start']}>
                 <Course
                     title={'Web Development'}
-                    discription={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.'}
+                    discription={'Lorem ipsum dolor sit amet'}
                     creator={"Pranjal"}
                     lectureCount={'10'}
                     view={'100'}
                     imageSrc={'https://media.istockphoto.com/id/1389287506/photo/react-inscription-against-laptop-and-code-background.jpg?s=1024x1024&w=is&k=20&c=E8im8d3k0ng5M8eXChH6YKd8aaT81yaRHFHrnCFCUfw='}
                     id={'1'}
+                    addToPlaylistHandler={addToPlaylistHandler}
+                />
+                <Course
+                    title={'Data Science'}
+                    discription={'Lorem ipsum dolor sit amet'}
+                    creator={"Pranjal"}
+                    lectureCount={'3'}
+                    view={'90'}
+                    imageSrc={'https://media.istockphoto.com/id/1389287506/photo/react-inscription-against-laptop-and-code-background.jpg?s=1024x1024&w=is&k=20&c=E8im8d3k0ng5M8eXChH6YKd8aaT81yaRHFHrnCFCUfw='}
+                    id={'2'}
                     addToPlaylistHandler={addToPlaylistHandler}
                 />
             </Stack>
