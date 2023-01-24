@@ -10,6 +10,8 @@ import ForgertPassword from './components/Auth/ForgertPassword';
 import ResetPassword from './components/Auth/ResetPassword';
 import Contact from './components/Contact/Contact';
 import Request from './components/Request/Request';
+import About from './components/About/About';
+import Subscribe from './components/Payment/Subscribe';
 function App() {
   return (
     <Router>
@@ -19,10 +21,12 @@ function App() {
         <Route path="/courses" element={<Courses />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/request" element={<Request />} />
+        <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgetpassword" element={<ForgertPassword />} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
+        <Route path="/subscribe" element={<Subscribe />} />
       </Routes>
       <Footer />
     </Router>
