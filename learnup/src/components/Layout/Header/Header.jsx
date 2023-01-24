@@ -16,7 +16,7 @@ const Header = () => {
     const user = {
         role: "admin"
     }
-    const isAuthenticated = false;
+    const isAuthenticated = true;
     const logoutHandler = () => {
         console.log("logout");
         onClose();
@@ -25,7 +25,7 @@ const Header = () => {
     return (
         <>
             <ColorModeSwitcher />
-            <Button onClick={onOpen} colorScheme={"green"} height="12" width={"12"} rounded="full" position={"fixed"} top="5" left="6">
+            <Button onClick={onOpen} colorScheme={"green"} height="12" width={"12"} rounded="full" position={"fixed"} top="5" left="6" zIndex={'overlay'} >
                 <RiMenu5Fill />
             </Button>
             <Drawer placement='left' onClose={onClose} isOpen={isOpen}>
