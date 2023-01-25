@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 export const fileUploadCss = {
     cursor: "pointer",
     marginLeft: "-5%",
-    width: "50%",
+    width: "110%",
     border: "none",
     height: "100%",
     color: "ECC94B",
-    backgroundColor: "red",
+    // backgroundColor: "white",
 }
 const fileUploadStyle = {
     "&::file-selector-button": {
@@ -61,7 +61,7 @@ const Signup = () => {
                     </Box>
                     <Box my="4" >
                         <FormLabel htmlFor='chooseAvatar' children="Choose Avatar" />
-                        <Input accept='image/*' required id="chooseAvatar" type={"file"} focusBorderColor="green.500" css={fileUploadStyle} onChange={changeImageHandler} />
+                        <Input accept='image/*' required id="chooseAvatar" ty pe={"file"} focusBorderColor="green.500" css={fileUploadStyle} onChange={changeImageHandler} />
                     </Box>
 
                     <Button my="4" type='submit' colorScheme={"green"}>Sign Up</Button>
