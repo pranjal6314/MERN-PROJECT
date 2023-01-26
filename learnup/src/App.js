@@ -36,9 +36,9 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgetpassword" element={<ForgertPassword />} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
-        {/* <Route path="/subscribe" element={<Subscribe />} />
+        <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/paymentsuccess" element={<PaymentSuccess />} />
-        <Route path="/paymentfail" element={<PaymentFail />} /> */}
+        <Route path="/paymentfail" element={<PaymentFail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
