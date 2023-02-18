@@ -1,9 +1,9 @@
 import { Container, Heading, VStack, Input, Button } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 
 const ChangePassword = () => {
-    const [Oldpassword, setOldPassword] = React.useState("")
-    const [Newpassword, setNewPassword] = React.useState("")
+    const [Oldpassword, setOldPassword] = useState("")
+    const [Newpassword, setNewPassword] = useState("")
     return <Container py="16" minH={'90vh'}>
         <form >
             < Heading textTransform={"uppercase"} children="Change Password" my='16' textAlign={['center', 'left']} />
