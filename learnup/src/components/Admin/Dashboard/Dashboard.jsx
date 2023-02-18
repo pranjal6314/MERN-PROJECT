@@ -3,6 +3,7 @@ import React from 'react'
 import { RiArrowDownLine, RiArrowUpLine } from 'react-icons/ri'
 import crusorImg from '../../../assets/images/cursor.png'
 import Sidebar from '../Sidebar'
+import { DoughnutChart, Graph } from './Graph'
 const Dashboard = () => {
     return <Grid css={{ cursor: `url(${crusorImg}), default` }} minH={"100vh"} templateColumns={['1fr', '5fr 1fr']} >
         <Box boxSizing='border-box' py="16" px={["4", "0"]}>
@@ -17,7 +18,7 @@ const Dashboard = () => {
             >
                 <Heading textAlign={['center', 'left']} size='md' pt={['8', '0']} ml={['0', '16']} children="Views Graph" />
                 {/* line Graph here */}
-
+                <Graph />
             </Box>
             <Grid templateColumns={['1fr', '2fr 1fr ']}>
                 <Box p="4">
@@ -32,7 +33,8 @@ const Dashboard = () => {
 
                 <Box p={['0', '16']} boxSizing="border-box" py='4'>
                     <Heading textAlign={'center'} size='md' mb={'4'} ml={['0', '16']} children="Users" />
-                    {/* graph here */}
+                    {/* Doughnut graph here */}
+                    <DoughnutChart />
                 </Box>
             </Grid>
         </Box >
