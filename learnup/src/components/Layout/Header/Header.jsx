@@ -49,7 +49,7 @@ const Header = () => {
                                                 Logout</Button>
                                         </HStack>
                                         {
-                                            user && user.role === "admin" && <Link onClick={onClose} to="/admin/disboard">
+                                            user && user.role === "admin" && <Link onClick={onClose} to="/admin/dashboard">
                                                 <Button colorScheme={"green"}><RiDashboardFill style={{ margin: '4px' }} />Dasboard</Button>
                                             </Link>
                                         }
