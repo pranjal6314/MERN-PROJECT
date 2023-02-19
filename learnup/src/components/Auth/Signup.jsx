@@ -68,7 +68,7 @@ const Signup = () => {
                     <Box my="4">
                         Already Signed Up ?{" "}
                         <Link to="/login">
-                            <Button colorScheme={"green.500"} variant="link">
+                            <Button colorScheme={"green"} variant="link">
                                 Login
                             </Button>
                         </Link>{" "} Here
