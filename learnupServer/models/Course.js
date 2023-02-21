@@ -11,7 +11,7 @@ const schema = new mongoose.Schema({
   description: {
     type: String,
     required: [true, "Please provide a description"],
-    minLength: [25, "Description must be at least 25 characters"],
+    minLength: [10, "Description must be at least 25 characters"],
   },
   // Lectures title,description,videos { public_id,url }
   lectures: [
