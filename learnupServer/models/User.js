@@ -70,7 +70,11 @@ schema.methods.getJwtToken = function () {
 //   return await bcrypt.compare(password, this.password);
 // };
 schema.methods.comparePassword = async function (password) {
-  return await password.localeCompare(this.password);
+  console.log(password + " " + this.password);
+  // const isMatch = await password.localeCompare(this.password);
+  const isMatch = password === this.password;
+  console.log("isMatch", isMatch);
+  return isMatch;
 };
 
 export const User = mongoose.model("User", schema);

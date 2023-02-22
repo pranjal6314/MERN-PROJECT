@@ -3,6 +3,8 @@ import { config } from "dotenv";
 import course from "./routes/courseRoutes.js";
 import user from "./routes/userRoutes.js";
 import ErrorMiddleware from "./middlewares/Error.js";
+import cookieParser from "cookie-parser";
+
 config({
   path: "./config/config.env",
 });
@@ -15,6 +17,7 @@ app.use(
     extended: true,
   })
 );
+app.use(cookieParser());
 //import routes
 
 app.use("/api/v1", course);
