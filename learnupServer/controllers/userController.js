@@ -23,3 +23,43 @@ export const register = catchAsyncError(async (req, res, next) => {
   });
   sendToken(res, user, "Registration Successful", 201);
 });
+
+//LOGIN USER
+export const login = catchAsyncError(async (req, res, next) => {
+  const { email, password } = req.body;
+  // const file=req.file
+  if (!email || !password) {
+    return next(new ErrorHandler("Please enter all fields", 400));
+  }
+  const user = await User.findOne({ email }).select("+password");
+  if (!user) {
+    return next(new ErrorHandler("Incorrect Email and Password", 401));
+  }
+  const isMatch = await user.comparePassword(password);
+  if (!isMatch) {
+    return next(new ErrorHandler("Incorrect Credentials", 401));
+  }
+  sendToken(res, user, `Welcome Back ${user.name}`, 200);
+});
+
+//LOGOUT USER
+export const logout = catchAsyncError(async (req, res, next) => {
+  res
+    .status(200)
+    .cookie("token", null, {
+      expires: new Date(Date.now()),
+    })
+    .json({
+      success: true,
+      message: "Logged out successfully",
+    });
+});
+
+//Get My Profile
+export const getMyProfile = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.user._id);
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
