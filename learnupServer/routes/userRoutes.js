@@ -7,6 +7,8 @@ import {
   changePassword,
   updateProfile,
   updateProfilePicture,
+  forgetPassword,
+  resetPassword,
 } from "../controllers/userController.js";
 import { isAuthenticated } from "../middlewares/auth.js";
 const router = express.Router();
@@ -27,5 +29,8 @@ router.route("/updateprofile").put(isAuthenticated, updateProfile);
 router
   .route("/updateprofilepicture")
   .put(isAuthenticated, updateProfilePicture);
+//reset Password and forget password
+router.route("/forgetpassword").post(forgetPassword);
 
+router.route("/resetpassword/:token").put(resetPassword);
 export default router;
