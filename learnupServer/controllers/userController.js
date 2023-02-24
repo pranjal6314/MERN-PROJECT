@@ -6,17 +6,19 @@ import { sendEmail } from "../utils/sendEmail.js";
 import { Course } from "../models/Course.js";
 import crypto from "crypto";
 import cloudinary from "cloudinary";
+import getDataUri from "../utils/dataUri.js";
 //signup
 export const register = catchAsyncError(async (req, res, next) => {
   const { name, email, password } = req.body;
-  if (!name || !email || !password) {
+  const file = req.file;
+  if (!name || !email || !password || !file) {
     return next(new ErrorHandler("Please enter all fields", 400));
   }
   let user = await User.findOne({ email });
   if (user) {
     return next(new ErrorHandler("User already exists", 409));
   }
-  const file = req.file;
+
   const fileUri = getDataUri(file);
   const myCloud = await cloudinary.v2.uploader.upload(fileUri.content);
   user = await User.create({
