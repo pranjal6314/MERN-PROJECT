@@ -2,6 +2,7 @@ import catchAsyncError from "../middlewares/catchAsyncError.js";
 import { User } from "../models/User.js";
 import { instance } from "../server.js";
 import crypto from "crypto";
+import { Payment } from "../models/Payment.js";
 export const buySubscription = catchAsyncError(async (req, res, next) => {
   const user = await User.findById(req.user.id);
   if (user.role === "admin")
@@ -45,4 +46,11 @@ export const verifyPayment = catchAsyncError(async (req, res, next) => {
   res.redirect(
     `${process.env.FRONTEND_URL}/paymentsuccess?refrence=${razorpay_payment_id}`
   );
+});
+
+export const getRazorPayKey = catchAsyncError(async (req, res, next) => {
+  res.status(200).json({
+    success: true,
+    key: process.env.RAZORPAY_KEY_ID,
+  });
 });
