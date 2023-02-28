@@ -1,7 +1,7 @@
 import catchAsyncError from "../middlewares/catchAsyncError.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import { sendEmail } from "../utils/sendEmail.js";
-
+import { Stats } from "../models/Stats.js";
 export const contact = catchAsyncError(async (req, res, next) => {
   const { name, email, message } = req.body;
   if (!name || !email || !message) {
@@ -33,6 +33,7 @@ export const courseRequest = catchAsyncError(async (req, res, next) => {
   });
 });
 export const getDashboardStats = catchAsyncError(async (req, res, next) => {
+  const stats = await Stats.find({}).sort({ createdAt: "desc" }).limit(12);
   res.status(200).json({
     success: true,
   });
