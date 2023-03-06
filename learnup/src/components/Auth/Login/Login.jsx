@@ -1,13 +1,21 @@
 import { Container, VStack, Heading, FormLabel, Input, Box, Button } from '@chakra-ui/react'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from "react-router-dom"
+import { login } from '../../../Redux/actions/user'
 const Login = () => {
     const [email, setEmail] = React.useState("")
-    const [password, setPassword] = React.useState("")
+    const [password, setPassword] = React.useState("");
+    const dispatch = useDispatch();
+
+    const submitHandler = e => {
+        e.preventDefault();
+        dispatch(login(email, password));
+    };
     return <Container height={"95vh"}>
         <VStack height={"full"} justifyContent="center" spacing={"16"}>
             <Heading children="Welcome To LearnUp" />
-            <form style={{ width: "100%" }}>
+            <form onSubmit={submitHandler} style={{ width: "100%" }}>
                 <Box my="4" >
                     <FormLabel htmlFor='email' children="Email Address" />
                     <Input required id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="xyz@gmail.com" type={"email"} focusBorderColor="green.500" />

@@ -4,8 +4,9 @@ import { RiDashboard2Fill, RiDashboard3Fill, RiDashboardFill, RiLogoutBoxLine, R
 import { Link } from 'react-router-dom';
 import { ColorModeSwitcher } from "../../../ColorModeSwitcher"
 import { CgLogOut } from 'react-icons/cg';
+import { useSelector } from 'react-redux';
 
-const Header = () => {
+const Header = ({ isAuthenticated = false, user }) => {
     const LinkButton = ({ url = '/', title = "Home", onClose }) => (
         <Link onClick={onClose} to={url} >
             <Button variant={"ghost"}>{title}
@@ -13,10 +14,7 @@ const Header = () => {
         </Link>
     )
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const user = {
-        role: "admin"
-    }
-    const isAuthenticated = true;
+
     const logoutHandler = () => {
         console.log("logout");
         onClose();
