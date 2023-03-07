@@ -27,6 +27,7 @@ import { useSelector } from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { loadUser } from './Redux/actions/user';
+import { ProtectedRoute } from 'protected-route-react';
 function App() {
   window.addEventListener('contextmenu', e => {
     e.preventDefault();
@@ -57,7 +58,14 @@ function App() {
       <Header isAuthenticated={isAuthenticated} user={user} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/changepassword" element={<ChangePassword />} />
         <Route path="/updateprofile" element={<UpdateProfile />} />
         <Route path="/courses" element={<Courses />} />
@@ -65,7 +73,17 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/request" element={<Request />} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            <ProtectedRoute
+              isAuthenticated={!isAuthenticated}
+              redirect="/profile"
+            >
+              <Login />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgetpassword" element={<ForgertPassword />} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
