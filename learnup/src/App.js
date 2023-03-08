@@ -67,7 +67,14 @@ function App() {
           }
         />
         <Route path="/changepassword" element={<ChangePassword />} />
-        <Route path="/updateprofile" element={<UpdateProfile />} />
+        <Route
+          path="/updateprofile"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <UpdateProfile user={user} />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:id" element={<CoursePage />} />
         <Route path="/contact" element={<Contact />} />
