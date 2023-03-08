@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { UserReducer } from './reducers/userReducer.js';
+import { profileReducer, UserReducer } from './reducers/userReducer.js';
 
 const Store = configureStore({
   reducer: {
     user: UserReducer,
+    profile: profileReducer,
   },
 });
 export default Store;

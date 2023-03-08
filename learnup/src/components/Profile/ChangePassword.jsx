@@ -1,11 +1,22 @@
 import { Container, Heading, VStack, Input, Button } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { changePassword } from '../../Redux/actions/profile';
 
 const ChangePassword = () => {
     const [Oldpassword, setOldPassword] = useState("")
     const [Newpassword, setNewPassword] = useState("")
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const submitHandler = async e => {
+        e.preventDefault();
+        dispatch(changePassword(Oldpassword, Newpassword));
+
+    };
+
     return <Container py="16" minH={'90vh'}>
-        <form >
+        <form onSubmit={submitHandler} >
             < Heading textTransform={"uppercase"} children="Change Password" my='16' textAlign={['center', 'left']} />
             <VStack spacing={"8"}>
                 <Input required autoComplete="on" value={Oldpassword}

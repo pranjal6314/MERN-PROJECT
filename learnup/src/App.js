@@ -84,7 +84,17 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/signup"
+          element={
+            <ProtectedRoute
+              isAuthenticated={!isAuthenticated}
+              redirect="/profile"
+            >
+              <Signup />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/forgetpassword" element={<ForgertPassword />} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
         <Route path="/subscribe" element={<Subscribe />} />

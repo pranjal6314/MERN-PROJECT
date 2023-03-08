@@ -3,7 +3,11 @@ import { Container, VStack, Heading, Stack, Avatar, Text, Button, Box, HStack, I
 import { Link } from "react-router-dom"
 import { RiDeleteBack2Fill, RiDeleteBin7Fill } from 'react-icons/ri';
 import { fileUploadCss } from '../Auth/Signup';
+import { useDispatch } from 'react-redux';
+import { updateProfilePicture } from '../../Redux/actions/profile';
+import { loadUser } from '../../Redux/actions/user';
 const Profile = () => {
+    const dispatch = useDispatch();
     const user = {
         name: "pranjal",
         email: "pranjalchoudhary270@gmail.com",
@@ -24,8 +28,12 @@ const Profile = () => {
     }
 
 
-    const changeImageHandler = (e, image) => {
+    const changeImageHandler = async (e, image) => {
         e.preventDefault();
+        const myForm = new FormData();
+        myForm.append('file', image);
+        await dispatch(updateProfilePicture(myForm));
+        dispatch(loadUser());
     }
     const { isOpen, onClose, onOpen } = useDisclosure();
 
