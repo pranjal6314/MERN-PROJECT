@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container, VStack, Heading, Stack, Avatar, Text, Button, Box, HStack, Image, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, Input, ModalFooter, useDisclosure, ModalHeader } from '@chakra-ui/react'
 import { Link } from "react-router-dom"
 import { RiDeleteBack2Fill, RiDeleteBin7Fill } from 'react-icons/ri';
@@ -6,27 +6,25 @@ import { fileUploadCss } from '../Auth/Signup';
 import { useDispatch } from 'react-redux';
 import { updateProfilePicture } from '../../Redux/actions/profile';
 import { loadUser } from '../../Redux/actions/user';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-hot-toast';
 const Profile = ({ user }) => {
     const dispatch = useDispatch();
-    // const user = {
-    //     name: "pranjal",
-    //     email: "pranjalchoudhary270@gmail.com",
-    //     createdAt: String(new Date().toISOString()),
-    //     role: "user",
-    //     subscription: {
-    //         status: undefined,
-    //     },
-    //     playlist: [
-    //         {
-    //             course: "1", poster: 'https://media.istockphoto.com/id/1389287506/photo/react-inscription-against-laptop-and-code-background.jpg?s=1024x1024&w=is&k=20&c=E8im8d3k0ng5M8eXChH6YKd8aaT81yaRHFHrnCFCUfw='
-    //         }
-    //     ]
 
-    // };
     const removeCourseFromPlaylist = (id) => {
         console.log(id);
     }
-
+    const { loading, message, error } = useSelector(state => state.profile);
+    useEffect(() => {
+        if (error) {
+            toast.error(error);
+            dispatch({ type: 'clearError' });
+        }
+        if (message) {
+            toast.success(message);
+            dispatch({ type: 'clearMessage' });
+        }
+    }, [dispatch, error, message]);
 
     const changeImageHandler = async (e, image) => {
         e.preventDefault();
@@ -108,13 +106,13 @@ const Profile = ({ user }) => {
                 </Stack>
             )
         }
-        <ChangePhotoBox isOpen={isOpen} onClose={onClose} changeImageHandler={changeImageHandler} />
+        <ChangePhotoBox loading={loading} isOpen={isOpen} onClose={onClose} changeImageHandler={changeImageHandler} />
 
     </Container>
 }
 
 export default Profile
-const ChangePhotoBox = ({ isOpen, onClose, changeImageHandler }) => {
+const ChangePhotoBox = ({ isOpen, onClose, changeImageHandler, loading }) => {
     const [imagePrev, setImagePrev] = React.useState("")
     const [image, setImage] = React.useState("");
     const changeImage = (e) => {
@@ -147,7 +145,7 @@ const ChangePhotoBox = ({ isOpen, onClose, changeImageHandler }) => {
                                     imagePrev && <Avatar src={imagePrev} boxSize={'48'} />
                                 }
                                 <Input textColor={'black'} type={'file'} css={{ '&::file-selector-button': fileUploadCss }} onChange={changeImage} />
-                                <Button w='full' type='submit' colorScheme='green' >Change</Button>
+                                <Button isLoading={loading} w='full' type='submit' colorScheme='green' >Change</Button>
                             </VStack>
                         </form>
                     </Container>
