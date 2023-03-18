@@ -6,23 +6,23 @@ import { fileUploadCss } from '../Auth/Signup';
 import { useDispatch } from 'react-redux';
 import { updateProfilePicture } from '../../Redux/actions/profile';
 import { loadUser } from '../../Redux/actions/user';
-const Profile = () => {
+const Profile = ({ user }) => {
     const dispatch = useDispatch();
-    const user = {
-        name: "pranjal",
-        email: "pranjalchoudhary270@gmail.com",
-        createdAt: String(new Date().toISOString()),
-        role: "user",
-        subscription: {
-            status: undefined,
-        },
-        playlist: [
-            {
-                course: "1", poster: 'https://media.istockphoto.com/id/1389287506/photo/react-inscription-against-laptop-and-code-background.jpg?s=1024x1024&w=is&k=20&c=E8im8d3k0ng5M8eXChH6YKd8aaT81yaRHFHrnCFCUfw='
-            }
-        ]
+    // const user = {
+    //     name: "pranjal",
+    //     email: "pranjalchoudhary270@gmail.com",
+    //     createdAt: String(new Date().toISOString()),
+    //     role: "user",
+    //     subscription: {
+    //         status: undefined,
+    //     },
+    //     playlist: [
+    //         {
+    //             course: "1", poster: 'https://media.istockphoto.com/id/1389287506/photo/react-inscription-against-laptop-and-code-background.jpg?s=1024x1024&w=is&k=20&c=E8im8d3k0ng5M8eXChH6YKd8aaT81yaRHFHrnCFCUfw='
+    //         }
+    //     ]
 
-    };
+    // };
     const removeCourseFromPlaylist = (id) => {
         console.log(id);
     }
@@ -42,7 +42,7 @@ const Profile = () => {
         <Stack justifyContent={'flex-start'} direction={['column', 'row']} alignItems={'center'} spacing={['8', '16']} padding="8">
 
             <VStack>
-                <Avatar size={'2xl'} boxSize="48" />
+                <Avatar size={'2xl'} boxSize="48" src={user.avatar.url} />
                 <Button onClick={onOpen} colorScheme={'green'} variant='ghost'>Change Photo</Button>
             </VStack>
             <VStack spacing={'4'} alignItems={['center', 'flex-start']} >
@@ -63,7 +63,7 @@ const Profile = () => {
                         <HStack>
                             <Text children="Subscribtion" fontWeight={'bold'} />
                             {
-                                user.subscription.status === 'active' ? (
+                                user.subscription && user.subscription.status === 'active' ? (
                                     <Button colorScheme={'green'} variant={'ghost'} >Cancel Subscribtion</Button>
                                 ) : (
                                     <Link to="/subscribe">
