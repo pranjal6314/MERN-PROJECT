@@ -1,13 +1,19 @@
 import { Button, Container, Text, Heading, HStack, Input, Stack, VStack, Image } from '@chakra-ui/react'
-import { React, useState } from 'react'
+import { React, useEffect, useState } from 'react'
+import { toast } from 'react-hot-toast'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { getAllCourses } from '../../Redux/actions/course'
+import { addToPlaylist } from '../../Redux/actions/profile'
+import { loadUser } from '../../Redux/actions/user'
 
-const Course = ({ view, title, imageSrc, id, addToPlaylistHandler, creator, discription, lectureCount }) => {
+const Course = ({ view, title, imageSrc, id, addToPlaylistHandler, creator, description, lectureCount }) => {
     return (
         <VStack className='Course' alignItems={['center', 'flex-start']} >
             <Image src={imageSrc} boxSize={'60'} objectFit={'contain'} />
             <Heading fontFamily={'sans-serif'} noOfLines='3' maxW={'200px'} size={'sm'} textAlign={['center', 'left']} children={title} />
-            <Text noOfLines='2' children={discription} />
+            <Text noOfLines='2' children={description} />
             <HStack>
                 <Text fontWeight={'bold'} textTransform='uppercase' children={'Created By :'} />
                 <Text fontFamily={'fantasy'} textTransform='uppercase' children={creator} />
@@ -25,12 +31,32 @@ const Course = ({ view, title, imageSrc, id, addToPlaylistHandler, creator, disc
     )
 }
 const Courses = () => {
-    const addToPlaylistHandler = (id) => {
-        console.log(id);
-    }
+
     const [keyword, setKeyword] = useState('')
     const [category, setCategory] = useState('')
+    const dispatch = useDispatch();
+    const addToPlaylistHandler = async couseId => {
+        await dispatch(addToPlaylist(couseId));
+        dispatch(loadUser());
+    };
+
     const catergories = ['Web Development', 'Data Science', 'Machine Learning', 'Artificial Intelligence', 'Cyber Security', 'Cloud Computing', 'Ethical Hacking', 'Programming Languages', 'Mobile Development', 'Game Development', 'Software Testing', 'Digital Marketing', 'Graphic Design', 'Business', 'Office Productivity', 'Personal Development', 'Design', 'Marketing', 'Lifestyle', 'Photography', 'Health & Fitness', 'Music', 'Teaching & Academics']
+    const { loading, courses, error, message } = useSelector(
+        state => state.course
+    );
+    useEffect(() => {
+        dispatch(getAllCourses(category, keyword));
+
+        if (error) {
+            toast.error(error);
+            dispatch({ type: 'clearError' });
+        }
+
+        if (message) {
+            toast.success(message);
+            dispatch({ type: 'clearMessage' });
+        }
+    }, [category, keyword, dispatch, error, message]);
     return (
         <Container minH={"95vh"} maxW={"container.lg"} paddingY={'8'} >
             <Heading children="All Courses" m={'8'} />
@@ -43,26 +69,24 @@ const Courses = () => {
                 ))}
             </HStack>
             <Stack direction={['column', 'row']} flexWrap="wrap" justifyContent={['flex-start', 'space-evenly']} alignItems={['center', 'flex-start']}>
-                <Course
-                    title={'Web Development'}
-                    discription={'Lorem ipsum dolor sit amet'}
-                    creator={"Pranjal"}
-                    lectureCount={'10'}
-                    view={'100'}
-                    imageSrc={'https://media.istockphoto.com/id/1389287506/photo/react-inscription-against-laptop-and-code-background.jpg?s=1024x1024&w=is&k=20&c=E8im8d3k0ng5M8eXChH6YKd8aaT81yaRHFHrnCFCUfw='}
-                    id={'1'}
-                    addToPlaylistHandler={addToPlaylistHandler}
-                />
-                <Course
-                    title={'Data Science'}
-                    discription={'Lorem ipsum dolor sit amet'}
-                    creator={"Pranjal"}
-                    lectureCount={'3'}
-                    view={'90'}
-                    imageSrc={'https://media.istockphoto.com/id/1389287506/photo/react-inscription-against-laptop-and-code-background.jpg?s=1024x1024&w=is&k=20&c=E8im8d3k0ng5M8eXChH6YKd8aaT81yaRHFHrnCFCUfw='}
-                    id={'2'}
-                    addToPlaylistHandler={addToPlaylistHandler}
-                />
+                {courses.length > 0 ? (
+                    courses.map(item => (
+                        <Course
+                            key={item._id}
+                            title={item.title}
+                            description={item.description}
+                            views={item.views}
+                            imageSrc={item.poster.url}
+                            id={item._id}
+                            creator={item.createdBy}
+                            lectureCount={item.numOfVideos}
+                            addToPlaylistHandler={addToPlaylistHandler}
+                            loading={loading}
+                        />
+                    ))
+                ) : (
+                    <Heading mt="4" children="Courses Not Found" />
+                )}
             </Stack>
 
         </Container>
