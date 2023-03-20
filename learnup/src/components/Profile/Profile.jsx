@@ -5,7 +5,7 @@ import { RiDeleteBack2Fill, RiDeleteBin7Fill } from 'react-icons/ri';
 import { fileUploadCss } from '../Auth/Signup';
 import { useDispatch } from 'react-redux';
 import { removeFromPlaylist, updateProfilePicture } from '../../Redux/actions/profile';
-import { loadUser } from '../../Redux/actions/user';
+import { cancelSubscription, loadUser } from '../../Redux/actions/user';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast';
 const Profile = ({ user }) => {
@@ -16,6 +16,11 @@ const Profile = ({ user }) => {
         dispatch(loadUser());
     }
     const { loading, message, error } = useSelector(state => state.profile);
+    const {
+        loading: subscriptionLoading,
+        message: subscriptionMessage,
+        error: subscriptionError,
+    } = useSelector(state => state.subscription);
     useEffect(() => {
         if (error) {
             toast.error(error);
@@ -25,7 +30,17 @@ const Profile = ({ user }) => {
             toast.success(message);
             dispatch({ type: 'clearMessage' });
         }
-    }, [dispatch, error, message]);
+        if (subscriptionMessage) {
+            toast.success(subscriptionMessage);
+            dispatch({ type: 'clearMessage' });
+            dispatch(loadUser());
+        }
+
+        if (subscriptionError) {
+            toast.error(subscriptionError);
+            dispatch({ type: 'clearError' });
+        }
+    }, [dispatch, error, message, subscriptionError, subscriptionMessage]);
 
     const changeImageHandler = async (e, image) => {
         e.preventDefault();
@@ -34,6 +49,9 @@ const Profile = ({ user }) => {
         await dispatch(updateProfilePicture(myForm));
         dispatch(loadUser());
     }
+    const cancelSubscriptionHandler = () => {
+        dispatch(cancelSubscription());
+    };
     const { isOpen, onClose, onOpen } = useDisclosure();
 
     return <Container minH={"95vh"} maxW="container.lg" py={"8"} >
@@ -63,7 +81,7 @@ const Profile = ({ user }) => {
                             <Text children="Subscribtion" fontWeight={'bold'} />
                             {
                                 user.subscription && user.subscription.status === 'active' ? (
-                                    <Button colorScheme={'green'} variant={'ghost'} >Cancel Subscribtion</Button>
+                                    <Button isLoading={subscriptionLoading} onClick={cancelSubscriptionHandler} colorScheme={'green'} variant={'ghost'} >Cancel Subscribtion</Button>
                                 ) : (
                                     <Link to="/subscribe">
                                         <Button colorScheme={'green'} variant={'solid'} >Subscribe</Button>
