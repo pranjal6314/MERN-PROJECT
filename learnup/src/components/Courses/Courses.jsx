@@ -8,7 +8,7 @@ import { getAllCourses } from '../../Redux/actions/course'
 import { addToPlaylist } from '../../Redux/actions/profile'
 import { loadUser } from '../../Redux/actions/user'
 
-const Course = ({ view, title, imageSrc, id, addToPlaylistHandler, creator, description, lectureCount }) => {
+const Course = ({ loading, view, title, imageSrc, id, addToPlaylistHandler, creator, description, lectureCount }) => {
     return (
         <VStack className='Course' alignItems={['center', 'flex-start']} >
             <Image src={imageSrc} boxSize={'60'} objectFit={'contain'} />
@@ -24,7 +24,7 @@ const Course = ({ view, title, imageSrc, id, addToPlaylistHandler, creator, desc
                 <Link to={`/courses/${id}`}>
                     <Button colorScheme={'yellow'}>Enroll Now</Button>
                 </Link>
-                <Button colorScheme={'yellow'} variant='ghost' onClick={() => addToPlaylistHandler(id)}>Add To Playlist</Button>
+                <Button isLoading={loading} colorScheme={'yellow'} variant='ghost' onClick={() => addToPlaylistHandler(id)}>Add To Playlist</Button>
             </Stack>
         </VStack>
 

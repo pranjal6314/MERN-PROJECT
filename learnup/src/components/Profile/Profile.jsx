@@ -4,15 +4,16 @@ import { Link } from "react-router-dom"
 import { RiDeleteBack2Fill, RiDeleteBin7Fill } from 'react-icons/ri';
 import { fileUploadCss } from '../Auth/Signup';
 import { useDispatch } from 'react-redux';
-import { updateProfilePicture } from '../../Redux/actions/profile';
+import { removeFromPlaylist, updateProfilePicture } from '../../Redux/actions/profile';
 import { loadUser } from '../../Redux/actions/user';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast';
 const Profile = ({ user }) => {
     const dispatch = useDispatch();
 
-    const removeCourseFromPlaylist = (id) => {
-        console.log(id);
+    const removeCourseFromPlaylist = async (id) => {
+        await dispatch(removeFromPlaylist(id));
+        dispatch(loadUser());
     }
     const { loading, message, error } = useSelector(state => state.profile);
     useEffect(() => {
@@ -96,7 +97,7 @@ const Profile = ({ user }) => {
                                     <Link to={`/courses/${item.course}`}>
                                         <Button colorScheme={'green'} variant='ghost'>Watch Now</Button>
                                     </Link>
-                                    <Button onClick={() => {
+                                    <Button isLoading={loading} onClick={() => {
                                         removeCourseFromPlaylist(item.course)
                                     }} ><RiDeleteBin7Fill /> </Button>
                                 </HStack>
