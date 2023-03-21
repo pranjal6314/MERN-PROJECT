@@ -36,8 +36,7 @@ export const DoughnutChart = ({ users = [] }) => {
         datasets: [
             {
                 label: 'Views',
-                // data: users,
-                data: [6, 7],
+                data: users,
                 borderColor: ['rgb(62,12,171)', 'rgb(214,43,129)'],
                 backgroundColor: ['rgba(62,12,171,0.3)', 'rgba(214,43,129,0.3)'],
                 borderWidth: 1,
