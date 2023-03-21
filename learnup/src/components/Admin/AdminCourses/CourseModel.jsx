@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { RiDeleteBin7Fill } from 'react-icons/ri'
 import { fileUploadCss } from '../CreateCourse/CreateCourse';
 
-const CourseModel = ({ isOpen, onClose, id, deleteButtonHandler, addLectureHandle, courseTitle, lectures = {} }) => {
+const CourseModel = ({ isOpen, onClose, id, deleteButtonHandler, addLectureHandle, courseTitle, lectures = [], loading }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [video, setVideo] = useState('')
@@ -38,7 +38,20 @@ const CourseModel = ({ isOpen, onClose, id, deleteButtonHandler, addLectureHandl
                             <Heading children={`#${id}`} size='sm' opacity={'0.4'} />
                         </Box>
                         <Heading children='lectures' size={'lg'} />
-                        <VideoCard title="react intro" num={1} description="intro lecture basic only" lectureId="234232" courseId={id} deleteButtonHandler={deleteButtonHandler} />
+                        {/* <VideoCard title="react intro" num={1} description="intro lecture basic only" lectureId="234232" courseId={id} deleteButtonHandler={deleteButtonHandler} /> */
+                        }
+                        {lectures.map((item, i) => (
+                            <VideoCard
+                                key={i}
+                                title={item.title}
+                                description={item.description}
+                                num={i + 1}
+                                lectureId={item._id}
+                                courseId={id}
+                                deleteButtonHandler={deleteButtonHandler}
+                                loading={loading}
+                            />
+                        ))}
                     </Box>
                     <Box>
                         <form onSubmit={e => addLectureHandle(e, id, title, description, video)}>
@@ -56,7 +69,7 @@ const CourseModel = ({ isOpen, onClose, id, deleteButtonHandler, addLectureHandl
                                         <video controlsList='nodownload' controls src={videoPrev}></video>
                                     )
                                 }
-                                <Button w='full' colorScheme={'green'} type='submit'>Upload</Button>
+                                <Button isLoading={loading} w='full' colorScheme={'green'} type='submit'>Upload</Button>
                             </VStack>
                         </form>
                     </Box>

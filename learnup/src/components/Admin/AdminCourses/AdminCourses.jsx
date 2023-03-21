@@ -22,7 +22,7 @@ const AdminCourses = () => {
     const dispatch = useDispatch();
 
     const deleteButtonHandler = courseId => {
-        console.log(courseId);
+
         dispatch(deleteCourse(courseId));
     };
     const deleteLectureButtonHandler = async (courseId, lectureId) => {
@@ -60,21 +60,7 @@ const AdminCourses = () => {
         dispatch(getAllCourses());
     }, [dispatch, error, message, onClose]);
 
-    const Courses = [{
-        "_id": "60e1f1b0b0b5a8a0b4b0b5b1",
-        "title": "React Course",
-        "category": "Web Development",
-        "role": "student",
-        "poster": {
-            "url": "https://media.istockphoto.com/id/1389287506/photo/react-inscription-against-laptop-and-code-background.jpg?s=1024x1024&w=is&k=20&c=E8im8d3k0ng5M8eXChH6YKd8aaT81yaRHFHrnCFCUfw=",
-        },
-        "createdBy": "pranjal",
-        "views": 100,
-        "numOfVideos": 10,
 
-
-    }
-    ]
 
     return <Grid css={{ cursor: `url(${crusorImg}), default` }} minH={"100vh"} templateColumns={['1fr', '5fr 1fr']} >
         <Box overflowX={'auto'} p={['0', '8']}>
@@ -124,7 +110,7 @@ const AdminCourses = () => {
 
 export default AdminCourses
 
-function Row({ item, courseDetailsHandler, deleteButtonHandler }) {
+function Row({ item, courseDetailsHandler, deleteButtonHandler, loading }) {
     return (
         <Tr>
             <Td>#{item._id}</Td>
@@ -136,8 +122,8 @@ function Row({ item, courseDetailsHandler, deleteButtonHandler }) {
             <Td isNumeric>{item.numOfVideos}</Td>
             <Td isNumeric>
                 <HStack justifyContent={'flex-end'}>
-                    <Button onClick={() => courseDetailsHandler(item._id, item.title)} variant={'outline'} color="green.500">View Lectures</Button>
-                    <Button onClick={() => deleteButtonHandler(item._id)} color="green.600" >
+                    <Button isLoading={loading} onClick={() => courseDetailsHandler(item._id, item.title)} variant={'outline'} color="green.500">View Lectures</Button>
+                    <Button isLoading={loading} onClick={() => deleteButtonHandler(item._id)} color="green.600" >
                         <RiDeleteBin7Fill />
                     </Button>
                 </HStack>
