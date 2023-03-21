@@ -58,7 +58,7 @@ const CourseModel = ({ isOpen, onClose, id, deleteButtonHandler, addLectureHandl
                             <VStack spacing={'4'}>
                                 <Heading children="Add Leacture" size={'sm'} textTransform='uppercase' />
                                 <Input placeholder='Title' focusBorderColor='green.300' value={title} onChange={(e) => { setTitle(e.target.value) }} />
-                                <Input placeholder='Description' focusBorderColor='green.300' value={title} onChange={(e) => { setDescription(e.target.value) }} />
+                                <Input placeholder='Description' focusBorderColor='green.300' value={description} onChange={(e) => { setDescription(e.target.value) }} />
                                 <Input accept='video/mp4' required type={"file"} focusBorderColor="green.500" css={{
                                     '&::file-selector-button': {
                                         ...fileUploadCss, color: 'green'
