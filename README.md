@@ -1,68 +1,98 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+ 
+<!--   <video width="700" height="240" controls>
+  <source src="https://github.com/pranjal6314/MERN-PROJECT/assets/77271332/e1b8e6b4-98a1-4dca-bd7f-df5bc365e7a2" type="video/mp4"> 
+ <source src="https://github.com/pranjal6314/MERN-PROJECT/assets/77271332/e1b8e6b4-98a1-4dca-bd7f-df5bc365e7a2" type="video/ogg">
+  Your browser does not support the video tag. -->
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+https://github.com/pranjal6314/MERN-PROJECT/assets/77271332/2d8d1623-c7e0-4167-a4f5-5f417db23352
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+</video>
+</p>
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<!-- PROJECT LOGO -->
+<p align="center">
+  <h1 align="center">LearnUP 🏫</h1>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  <p align="center">
+    A Learning Platform
+    <br />
+    <a href="https://github.com/pranjal6314/MERN-PROJECT/"><strong>Explore the docs »</strong></a>
+    <br />
+    •
+    <a href="https://github.com/pranjal6314/MERN-PROJECT/issues">Report Bug</a>
+    •
+    <a href="https://github.com/pranjal6314/MERN-PROJECT/issues">Request Feature</a>
+    •
+  </p>
+</p>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- BADGES -->
+<p align="center">
+  <a href="https://github.com/pranjal6314/MERN-PROJECT/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/pranjal6314/MERN-PROJECT.svg?style=for-the-badge">
+  </a>
+  <a href="https://github.com/pranjal6314/MERN-PROJECT/network/members">
+    <img src="https://img.shields.io/github/forks/pranjal6314/MERN-PROJECT?style=for-the-badge">
+  </a>  
+  <a href="https://github.com/pranjal6314/MERN-PROJECT/stargazers">
+    <img src="https://img.shields.io/github/stars/pranjal6314/MERN-PROJECT?style=for-the-badge">
+  </a>
+  <a href="https://github.com/pranjal6314/MERN-PROJECT/issues">
+    <img src="https://img.shields.io/github/issues/pranjal6314/MERN-PROJECT?style=for-the-badge">
+  </a>
+</p>
 
-### `npm run eject`
+## 🌟 LearnUP - Empowering Lifelong Learning 🎓
+## Features 🔍
+- 📚 **Course Repository:** Explore a wide array of courses on various subjects, from academics to vocational skills.
+- 📝 **Course Creation:** Educators can easily create and upload courses using simple code snippets.
+- 🌟 **Student Profiles:** Track your course progress and earned certifications in your personalized profile.
+- 💬 **Discussion Forums:** Engage with instructors and peers, ask questions, and collaborate on projects.
+- 🏅 **Certifications:** Earn certificates upon completing courses to boost your professional profile.
+- 🌐 **Multilingual Support:** OpenCourseHub speaks your language, promoting global participation. 🌍
+## Get Involved 👥
+We welcome contributions from developers, designers, and educators! Here's how you can get involved:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. 👩‍💻 **Developers:** Contribute to the platform's growth and enhancement. Check out our [Contributor's Guide](CONTRIBUTING.md) for details.
+2. 🎨 **Designers:** Help improve the user experience and design of the website.
+3. 📚 **Educators:** Share your knowledge with the world by creating and uploading your courses.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## How to Run Locally 🏃‍♀️
+To run LearnUP locally on your machine, follow these steps:
+1. 📥 Clone the repository:
+```
+  git clone git@github.com:pranjal6314/MERN-PROJECT.git
+```
+3. 📦 Install dependencies:
+```
+  cd LearnUP
+  npm install
+```
+3. ⚙️ Build and run the server:
+```
+npm run start
+```
+4. 🌐 Open your browser and go to `http://localhost:3000` to access LearnUP.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+5 . To run the backend locally:
+    <br />
+    <a href="https://github.com/pranjal6314/LernUp-Backend"><strong>Explore the docs »</strong></a>
+    <br />
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Feedback 💬
+Your feedback is valuable to us! If you encounter any issues or have suggestions for improvement, please [submit an issue](https://github.com/OpenCourseHub/OpenCourseHub/issues).
 
-## Learn More
+Let's learn and grow together with LearnUP! 🌱👩‍🎓
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+🔗 Website: https://uplearn.vercel.app/
+📧 Contact: pranjalchoudhary270@gmail.com
+[`LinkedIn`](https://www.linkedin.com/in/pranjal1/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
