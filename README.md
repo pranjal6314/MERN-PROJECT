@@ -36,16 +36,16 @@ https://github.com/pranjal6314/MERN-PROJECT/assets/77271332/2d8d1623-c7e0-4167-a
 <!-- BADGES -->
 <p align="center">
   <a href="https://github.com/pranjal6314/MERN-PROJECT/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/pranjal6314/MERN-PROJECT.svg?style=for-the-badge">
+    <img src="https://img.shields.io/github/contributors/pranjal6314/MERN-PROJECT.svg">
   </a>
   <a href="https://github.com/pranjal6314/MERN-PROJECT/network/members">
-    <img src="https://img.shields.io/github/forks/pranjal6314/MERN-PROJECT?style=for-the-badge">
+    <img src="https://img.shields.io/github/forks/pranjal6314/MERN-PROJECT">
   </a>  
   <a href="https://github.com/pranjal6314/MERN-PROJECT/stargazers">
-    <img src="https://img.shields.io/github/stars/pranjal6314/MERN-PROJECT?style=for-the-badge">
+    <img src="https://img.shields.io/github/stars/pranjal6314/MERN-PROJECT">
   </a>
   <a href="https://github.com/pranjal6314/MERN-PROJECT/issues">
-    <img src="https://img.shields.io/github/issues/pranjal6314/MERN-PROJECT?style=for-the-badge">
+    <img src="https://img.shields.io/github/issues/pranjal6314/MERN-PROJECT">
   </a>
 </p>
 
